@@ -1,0 +1,14 @@
+# Arquivos pesados de mídia (vídeos de drone, gopro e fotos brutas)
+DRONE/
+gopro/
+gorpo/
+FOTOS_PRODUTOS/
+DOCUMENTOS/
+
+# PDFs e arquivos temporários de exportação
+*.pdf
+*_temp.html
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db

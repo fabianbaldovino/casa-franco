@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plano de Ação Comercial & Estratégia de Venda | Dr. Gastão Rhodes, 394</title>
+
+  <script>
+    // Prioridade Mandatória: Inicialização instantânea em Modo Claro (Light Mode)
+    document.documentElement.setAttribute('data-theme', 'light');
+    try { 
+      localStorage.setItem('casa_franco_theme', 'light');
+      // Limpa dados residuais para que TODAS as opções venham 100% desmarcadas para o Franco
+      localStorage.removeItem('casa_franco_builder_state_v4');
+      localStorage.removeItem('casa_franco_builder_state_v3');
+      localStorage.removeItem('casa_franco_builder_state_v2');
+      localStorage.removeItem('casa_franco_builder_state_v1');
+      localStorage.removeItem('casa_franco_builder_state');
+    } catch (e) {}
+    // Previne que o navegador restaure a rolagem da sessão anterior
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
+  </script>
+  
+  <!-- SEO & Metadados -->
+  <meta name="description" content="Configurador e Assistente Executivo de Decisão para a venda do imóvel na Rua Dr. Gastão Rhodes, 394 - Bairro Santana, Porto Alegre.">
+  <meta name="author" content="Especialista Imobiliário Santana / POA">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER EXECUTIVO -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <span class="brand-badge">Estratégia 2026</span>
+        <div>
+          <h1 class="brand-title">CASA FRANCO <span>• SANTANA POA</span></h1>
+          <p class="brand-subtitle">Plano de Ação Estratégico & Comercialização de Alto Impacto</p>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <!-- Botão de Alternância de Tema (em Light Mode exibe 🌙 para alternar para Dark) -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Mudar para Modo Escuro" title="Mudar para Modo Escuro" type="button">
+          🌙
+        </button>
+
+        <div id="headerStatusPill" class="status-pill">
+          <span class="status-dot"></span> Aguardando Decisão do Franco
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE EXECUTIVE HUD (MÉTRICAS EM TEMPO REAL) -->
+  <aside class="executive-hud" aria-label="Métricas da Estratégia">
+    <div class="hud-container">
+      <div class="hud-metric">
+        <div class="hud-icon blue">⚡</div>
+        <div class="hud-data">
+          <span class="hud-label">Estratégia Operacional</span>
+          <span id="hudStrategy" class="hud-value">Aguardando Decisão do Franco</span>
+        </div>
+      </div>
+
+      <div class="hud-metric">
+        <div class="hud-icon purple">🏢</div>
+        <div class="hud-data">
+          <span class="hud-label">Fase 1: Construtoras B2B</span>
+          <span id="hudB2bCount" class="hud-value">0 de 30</span>
+        </div>
+      </div>
+
+      <div class="hud-metric">
+        <div class="hud-icon emerald">🌐</div>
+        <div class="hud-data">
+          <span class="hud-label">Fase 2: Canais Diretos (FSBO)</span>
+          <span id="hudFsboCount" class="hud-value">0 de 6</span>
+        </div>
+      </div>
+
+      <div class="hud-metric">
+        <div class="hud-icon gold">🏷️</div>
+        <div class="hud-data">
+          <span class="hud-label">Preço Inicial do Franco</span>
+          <span id="hudFrancoPrice" class="hud-value" style="color:var(--gold-500);">R$ 630.000</span>
+        </div>
+      </div>
+
+      <button id="btnJumpToApproval" class="hud-action-btn" type="button">
+        Ir para Cockpit Final →
+      </button>
+    </div>
+  </aside>
+
+  <!-- CORPO PRINCIPAL DO WIZARD / BUILDER -->
+  <main class="main-layout">
+    
+    <!-- BARRA DE PROGRESSO & TABS DO WIZARD -->
+    <nav class="wizard-nav" aria-label="Etapas de Decisão">
+      <button class="wizard-step-tab active" data-step="1" type="button">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <span class="step-meta">Visão do Ativo</span>
+          <span class="step-title">Tese & Precificação</span>
+        </div>
+      </button>
+
+      <button class="wizard-step-tab" data-step="2" type="button">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <span class="step-meta">Fase 1 (B2B)</span>
+          <span class="step-title">30 Construtoras</span>
+        </div>
+      </button>
+
+      <button class="wizard-step-tab" data-step="3" type="button">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <span class="step-meta">Fase 2 (FSBO)</span>
+          <span class="step-title">Venda Direta (FSBO)</span>
+        </div>
+      </button>
+
+      <button class="wizard-step-tab" data-step="4" type="button">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <span class="step-meta">Decisão Executiva</span>
+          <span class="step-title">Revisão & Aprovação</span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- ====================================================================
+         ETAPA 1: O ATIVO & PRECIFICAÇÃO DUAL (AUDITORIA VS FRANCO)
+         ==================================================================== -->
+    <section class="step-panel active" data-step="1" id="panelStep1">
+      <div class="section-intro">
+        <div class="section-intro-left">
+          <span class="section-badge blue">Diagnóstico do Ativo & Inteligência de Mercado</span>
+          <h2 class="section-heading">Rua Dr. Gastão Rhodes, 394</h2>
+          <p class="section-subheading">
+            Lote estratégico regularizado de quase 200m² no Santana, com Habite-se pleno emitido e vocação de alta liquidez para novos empreendimentos ou moradia qualificada.
+          </p>
+        </div>
+      </div>
+
+      <div class="property-hero-grid">
+        <!-- Visual do Imóvel -->
+        <div class="property-visual-card">
+          <img src="./gopro/GP010068.JPG" onerror="this.src='./gopro/GP010067.JPG'" alt="Fachada Gastão Rhodes" class="property-visual-bg">
+          <div class="property-visual-overlay"></div>
+          <div class="property-visual-content">
+            <span class="property-tag">Santana • Porto Alegre / RS</span>
+            <h3 class="property-name">Residencial & Terreno Nobre</h3>
+            <p class="property-address">
+              📍 Rua Dr. Gastão Rhodes, 394 • CEP 90620-040 • Quarteirão Fiscal 25
+            </p>
+            <div class="property-specs-pills">
+              <span class="spec-pill">Terreno: <strong>199,65 m²</strong></span>
+              <span class="spec-pill">Área Construída: <strong>171,62 m²</strong></span>
+              <span class="spec-pill">Habite-se: <strong>Emitido e Aprovado</strong></span>
+              <span class="spec-pill">Zoneamento: <strong>Macrozona 1 / UEU 74</strong></span>
+              <span class="spec-pill">Cartório: <strong>2º RI de POA</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referência da Auditoria Técnica de Mercado -->
+        <div class="pricing-bento">
+          <div class="pricing-main-card glass-panel">
+            <div class="price-title">Referência Técnica da Auditoria (Mercado)</div>
+            <div class="price-big-number">R$ 575.000<span style="font-size:1.4rem; color:var(--text-muted);">,00</span></div>
+            <p class="price-explanation">
+              Patamar apurado com base em 15 comparáveis do Santana. Representa a média técnica de liquidez equilibrada.
+            </p>
+          </div>
+
+          <div class="pricing-sub-grid">
+            <div class="sub-price-card">
+              <div class="sub-price-label">Fechamento Justo de Auditoria</div>
+              <div class="sub-price-val green">R$ 550.000,00</div>
+              <div class="sub-price-note">Expectativa de liquidez normal</div>
+            </div>
+
+            <div class="sub-price-card">
+              <div class="sub-price-label">Piso Técnico de Auditoria</div>
+              <div class="sub-price-val yellow">R$ 540.000,00</div>
+              <div class="sub-price-note">Base mínima do laudo forense</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESPAÇO DE AUTONOMIA DE PREÇOS DO FRANCO -->
+      <div class="franco-pricing-container">
+        <div class="franco-pricing-header">
+          <div>
+            <h3>👑 Estratégia de Partida do Franco (Valores Desejados)</h3>
+            <p>
+              Você tem total autonomia para iniciar as ofertas em patamares mais altos para testar a resposta inicial do mercado. Digite abaixo os valores que você deseja praticar:
+            </p>
+          </div>
+          <span id="francoPriceDeltaBadge" class="price-delta-badge plus">
+            + R$ 55.000 (+9,6%) acima da auditoria
+          </span>
+        </div>
+
+        <div class="franco-inputs-grid">
+          <!-- Preço de Anúncio Inicial -->
+          <div class="franco-input-card">
+            <label for="inputFrancoAnuncio" class="franco-input-label">
+              1. Preço de Anúncio Inicial (Oferta de Partida)
+            </label>
+            <input id="inputFrancoAnuncio" class="gold-input-field" type="text" value="R$ 630.000">
+            <span class="franco-input-hint">Valor visível nos anúncios e nas abordagens iniciais.</span>
+          </div>
+
+          <!-- Meta de Fechamento Justo -->
+          <div class="franco-input-card">
+            <label for="inputFrancoFechamento" class="franco-input-label">
+              2. Meta Real de Fechamento
+            </label>
+            <input id="inputFrancoFechamento" class="gold-input-field" type="text" value="R$ 590.000">
+            <span class="franco-input-hint">O patamar ideal que satisfaz seu objetivo financeiro.</span>
+          </div>
+
+          <!-- Piso Mínimo Inegociável -->
+          <div class="franco-input-card">
+            <label for="inputFrancoPiso" class="franco-input-label">
+              3. Piso Mínimo Inegociável
+            </label>
+            <input id="inputFrancoPiso" class="gold-input-field" type="text" value="R$ 560.000">
+            <span class="franco-input-hint">Propostas abaixo deste valor serão automaticamente recusadas.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insight Box Estratégico -->
+      <div class="insight-box">
+        <div class="insight-icon">💡</div>
+        <div class="insight-text">
+          <h4>O Santana é uma Mina de Ouro Urbana hoje em Porto Alegre</h4>
+          <p>
+            Pela proximidade imediata com grandes hospitais (<strong>Hospital de Clínicas, Ernesto Dornelles, Instituto de Cardiologia</strong>) e polos de estudo (<strong>UFRGS e PUC-RS</strong>), a demanda para esse terreno gira em torno de duas frentes poderosas: <strong>estúdios compactos de alta rentabilidade</strong> (para residentes médicos e estudantes) e <strong>prédios comerciais / clínicas boutique</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ETAPA 2: FASE 1 - INCORPORADORAS & CONSTRUTORAS (B2B)
+         ==================================================================== -->
+    <section class="step-panel" data-step="2" id="panelStep2">
+      <div class="section-intro">
+        <div class="section-intro-left">
+          <span class="section-badge purple">Fase 1: Prospecção B2B de Alto Valor</span>
+          <h2 class="section-heading">Incorporadoras e Construtoras</h2>
+          <p class="section-subheading">
+            Mapeamento e abordagem direta com diretores de Novos Negócios e Captação de Terrenos (Landbank) em Porto Alegre.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tese B2B -->
+      <div class="b2b-strategy-card glass-panel">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main); margin-bottom:0.25rem;">
+              🎯 Projeção Real de Retorno B2B
+            </h3>
+            <p style="font-size:0.9rem; color:var(--text-muted); max-width:700px;">
+              Muitas construtoras estão ativamente alimentando o seu banco de terrenos (landbank). Um lote regularizado de quase 200m² com Habite-se no Santana é um ativo líquido de rara oferta.
+            </p>
+          </div>
+          <div style="background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); border-radius:var(--radius-md); padding:0.85rem 1.4rem; text-align:center;">
+            <span style="font-size:0.75rem; text-transform:uppercase; color:var(--blue-500); font-weight:700;">Conversão Estimada</span>
+            <div style="font-size:1.6rem; font-weight:900; color:var(--text-main);">3 a 5 Reuniões Quentes</div>
+          </div>
+        </div>
+
+        <div class="thesis-grid">
+          <div class="thesis-item">
+            <h4>🏢 Estúdios Compactos & Flats Médicos</h4>
+            <p>Atende a intensa rotatividade de médicos residentes, pós-graduandos e professores da UFRGS/PUC e dos 3 hospitais adjacentes.</p>
+          </div>
+          <div class="thesis-item">
+            <h4>🏥 Prédios Comerciais & Clínicas Boutique</h4>
+            <p>Configuração ideal para consultórios médicos, clínicas integradas e escritórios de estruturação de renda.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ações de Execução B2B -->
+      <h3 style="font-size:1.2rem; font-weight:800; color:var(--text-main); margin-bottom:1rem;">
+        ⚡ Ações de Execução que Vamos Conduzir:
+      </h3>
+      <div class="action-cards-grid">
+        <div class="action-card">
+          <span class="action-badge">Ação 1 • Outbound</span>
+          <h4 class="action-title">Prospecção Ativa Direta</h4>
+          <p class="action-desc">
+            Mapear o telefone direto de Novos Negócios e Captação de Terrenos dessas empresas. Ligar apresentando a tese técnica da Macrozona 1 / UEU 74.
+          </p>
+          <ul class="action-features-list">
+            <li>Apresentação da viabilidade técnica do lote</li>
+            <li>Disparo do Dossiê Técnico Forense de Precificação</li>
+            <li>Envio do vídeo imersivo com tomadas de Drone em 4K</li>
+          </ul>
+        </div>
+
+        <div class="action-card">
+          <span class="action-badge">Ação 2 • Presencial</span>
+          <h4 class="action-title">Reuniões & Vistorias Técnicas</h4>
+          <p class="action-desc">
+            Receber engenheiros, arquitetos e diretores de novos negócios diretamente na propriedade para avaliação física e validação de viabilidade.
+          </p>
+          <ul class="action-features-list">
+            <li>Recepção com protocolo executivo e propriedade organizada</li>
+            <li>Esclarecimento imediato sobre regularidade edilícia (Habite-se)</li>
+            <li>Condução das rodadas de ofertas de compra ou permuta financeira</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Catálogo das 30 Construtoras -->
+      <div class="catalog-header">
+        <div class="catalog-title-group">
+          <h3>Lista de 30 Incorporadoras / Construtoras em POA</h3>
+          <p>Todas iniciam desmarcadas. Clique nas empresas que você aprova para abordagem:</p>
+        </div>
+
+        <div class="filter-buttons-group">
+          <button class="filter-chip active" data-filter="all" type="button">Todas (30)</button>
+          <button class="filter-chip" data-filter="gigante" type="button">Gigantes & Alto Padrão (10)</button>
+          <button class="filter-chip" data-filter="boutique" type="button">Boutiques & Compactos (10)</button>
+          <button class="filter-chip" data-filter="comercial" type="button">Comerciais & Tradicionais (10)</button>
+          
+          <button id="btnSelectAllCompanies" class="batch-action-btn" type="button">✓ Selecionar Todas</button>
+          <button id="btnClearAllCompanies" class="batch-action-btn" type="button">✕ Desmarcar Todas</button>
+        </div>
+      </div>
+
+      <div id="companyGrid" class="company-grid">
+        <!-- Renderizado dinamicamente via app.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ETAPA 3: FASE 2 - PESSOAS FÍSICAS (FSBO / VENDA DIRETA)
+         ==================================================================== -->
+    <section class="step-panel" data-step="3" id="panelStep3">
+      <div class="section-intro">
+        <div class="section-intro-left">
+          <span class="section-badge emerald">Fase 2: Venda Direta Sem Intermediação</span>
+          <h2 class="section-heading">Pessoas Físicas (FSBO)</h2>
+          <p class="section-subheading">
+            Modelo <em>For Sale By Owner</em>: Conexão direta com compradores finais, médicos, investidores patrimoniais e moradores do bairro Santana.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner de Operação Direta -->
+      <div class="fsbo-intro-banner">
+        <h3>Operação Direta com Compradores Finais</h3>
+        <p>
+          Através de canais próprios e portais por taxa fixa, a negociação é conduzida com total agilidade diretamente pelo proprietário, preservando o valor líquido patrimonial do imóvel e acelerando as tomadas de decisão diretamente com interessados qualificados.
+        </p>
+      </div>
+
+      <!-- Ações de Execução FSBO -->
+      <h3 style="font-size:1.2rem; font-weight:800; color:var(--text-main); margin-bottom:1rem;">
+        ⚡ Ações de Execução que Vamos Conduzir:
+      </h3>
+      <div class="action-cards-grid">
+        <div class="action-card">
+          <span class="action-badge" style="background:rgba(16,185,129,0.15); color:var(--emerald-500);">Ação 1 • Conteúdo & Mídia</span>
+          <h4 class="action-title">Gestão de Leads & Mídia em Alta Resolução</h4>
+          <p class="action-desc">
+            Produção e envio do material audiovisual (fotos profissionais e tomadas aéreas em drone) via WhatsApp ou link para os interessados.
+          </p>
+          <ul class="action-features-list">
+            <li>Vídeo de apresentação e sobrevoos em drone</li>
+            <li>Caderno de fotos limpas e ângulos valorizados</li>
+            <li>Atendimento imediato e resposta qualificada em minutos</li>
+          </ul>
+        </div>
+
+        <div class="action-card">
+          <span class="action-badge" style="background:rgba(16,185,129,0.15); color:var(--emerald-500);">Ação 2 • Filtro Rigoroso</span>
+          <h4 class="action-title">Qualificação & Visitas Selecionadas</h4>
+          <p class="action-desc">
+            Filtrar especuladores e curiosos, recebendo apenas os reais potenciais compradores na propriedade limpa e organizada.
+          </p>
+          <ul class="action-features-list">
+            <li>Checagem prévia de capacidade financeira / intenção real</li>
+            <li>Agendamentos em horários nobres de iluminação</li>
+            <li>Roteiro focado no potencial de valorização do terreno + casa</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Portais de Venda Direta -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin: 2rem 0 1.25rem 0;">
+        <div>
+          <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main); margin-bottom:0.25rem;">
+            Principais Portais & Plataformas para Venda Direta
+          </h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">
+            Todos iniciam desmarcados. Ative apenas os canais que você aprova para veicular anúncios:
+          </p>
+        </div>
+        <div class="filter-buttons-group">
+          <button id="btnSelectAllPortals" class="batch-action-btn" type="button">✓ Ativar Todos os 6 Portais</button>
+          <button id="btnClearAllPortals" class="batch-action-btn" type="button">✕ Desmarcar Todos</button>
+        </div>
+      </div>
+
+      <div id="portalsGrid" class="portals-grid">
+        <!-- Renderizado dinamicamente via app.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ETAPA 4: RESUMO EXECUTIVO & FORMALIZAÇÃO DO PLANO
+         ==================================================================== -->
+    <section class="step-panel" data-step="4" id="panelStep4">
+      <div class="section-intro">
+        <div class="section-intro-left">
+          <span class="section-badge gold">Formalização & Disparo Estratégico</span>
+          <h2 class="section-heading">Cockpit de Decisão do Franco</h2>
+          <p class="section-subheading">
+            Revise a configuração do plano, escolha o ritmo de início, valide o orçamento de preparação e clique para formalizar a aprovação comercial.
+          </p>
+        </div>
+      </div>
+
+      <div class="approval-cockpit">
+        <!-- Dossiê Resumo -->
+        <div class="summary-dossier-card glass-panel">
+          <div class="dossier-meta-header">
+            <div>
+              <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">Dossiê Consolidado de Execução</h3>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Imóvel Dr. Gastão Rhodes, 394 • Bairro Santana</p>
+            </div>
+            <span id="dossierApprovalCode" class="dossier-code">CÓD: PENDENTE</span>
+          </div>
+
+          <div class="dossier-row">
+            <div class="dossier-label">
+              Preço de Anúncio Inicial
+              <span>Oferta de partida nos canais</span>
+            </div>
+            <div id="dossierFrancoAnuncio" class="dossier-val highlight">R$ 630.000,00</div>
+          </div>
+
+          <div class="dossier-row">
+            <div class="dossier-label">
+              Meta Real de Fechamento Justo
+              <span>Patamar financeiro almejado</span>
+            </div>
+            <div id="dossierFrancoFechamento" class="dossier-val">R$ 590.000,00</div>
+          </div>
+
+          <div class="dossier-row">
+            <div class="dossier-label">
+              Piso Mínimo Inegociável
+              <span>Limite de corte para contrapropostas</span>
+            </div>
+            <div id="dossierFrancoPiso" class="dossier-val">R$ 560.000,00</div>
+          </div>
+
+          <div class="dossier-row">
+            <div class="dossier-label">
+              Fase 1: Incorporadoras Aprovadas
+              <span>Prospecção Outbound B2B</span>
+            </div>
+            <div id="summaryB2bCount" class="dossier-val">0 construtoras (aguardando seleção do Franco)</div>
+          </div>
+
+          <div class="dossier-row">
+            <div class="dossier-label">
+              Fase 2: Canais Diretos FSBO
+              <span>Portais pagos por taxa fixa</span>
+            </div>
+            <div id="summaryPortalsCount" class="dossier-val">0 canais (aguardando seleção do Franco)</div>
+          </div>
+
+          <!-- BLOCO DE ORÇAMENTO MÁXIMO (INJETADO) -->
+          <div class="dossier-row" style="flex-direction: column; align-items: stretch; background: rgba(245, 158, 11, 0.05); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px dashed var(--border-gold); margin-top: 1.25rem;">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--gold-500); margin-bottom: 0.85rem; text-transform: uppercase;">
+              🛡️ Orçamento Máximo de Preparação (Aprovação)
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Corte de grama e roçada (pátio e recuos)</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">R$ 300,00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Limpeza pesada e lavagem da fachada</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">R$ 600,00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Banner de venda (lona com ilhós)</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">R$ 120,00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Publicidade mensal (portais e anúncios locais)</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">R$ 350,00 /mês</span>
+            </div>
+          </div>
+
+          <!-- Seletor de Modo de Operação (Todos iniciam desmarcados) -->
+          <div class="mode-selector-group">
+            <span class="mode-selector-label">Escolha o Ritmo de Início (Clique para Definir):</span>
+            <div class="mode-options-grid">
+              <button class="mode-option-btn" data-mode="hybrid" type="button">
+                <div class="mode-info">
+                  <h4>⚡ Aceleração Total (B2B + Venda Direta Simultâneas)</h4>
+                  <p>Iniciaremos a prospecção ativa nas construtoras junto com os anúncios nos canais diretos para maximizar a pressão de compra.</p>
+                </div>
+                <span>○</span>
+              </button>
+
+              <button class="mode-option-btn" data-mode="b2b_only" type="button">
+                <div class="mode-info">
+                  <h4>🏢 Foco 100% Construtoras Primeiro (B2B)</h4>
+                  <p>Abordar exclusivamente as incorporadoras durante os primeiros 20 dias antes de abrir nos portais abertos.</p>
+                </div>
+                <span>○</span>
+              </button>
+
+              <button class="mode-option-btn" data-mode="fsbo_only" type="button">
+                <div class="mode-info">
+                  <h4>🌐 Foco 100% Venda Direta Primeiro (FSBO)</h4>
+                  <p>Lançar imediatamente nos portais para captar médicos e investidores de pessoas físicas.</p>
+                </div>
+                <span>○</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel de Aprovação com a Assinatura do Franco -->
+        <div class="approval-action-card">
+          <div class="approval-card-header">
+            <div class="approval-avatar">F</div>
+            <h3 class="approval-card-title">Aprovação do Franco</h3>
+            <p class="approval-card-subtitle">
+              Proprietário • Rua Dr. Gastão Rhodes, 394
+            </p>
+          </div>
+
+          <div>
+            <label for="francoNotesInput" style="font-size:0.8rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:0.4rem;">
+              Observações ou Diretrizes Especiais do Franco (Opcional):
+            </label>
+            <textarea id="francoNotesInput" class="franco-notes-input" placeholder="Ex: Priorizar contato com a Smart e Melnick; marcar visitas apenas nas tardes de quarta e sábado..."></textarea>
+
+            <button id="btnApproveMaster" class="btn-approve-master" type="button">
+              <span>APROVAR PLANO DE AÇÃO ESTRATÉGICO</span>
+            </button>
+
+            <!-- Ações Pós-Aprovação -->
+            <div id="postApprovalActions" class="post-approval-actions" style="grid-template-columns: 1fr; gap: 0.6rem;">
+              <button id="btnPreviewPlanModal" class="action-secondary-btn" type="button" style="background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.4); color:var(--blue-500); padding:0.9rem;">
+                <span>👁️ Pré-Visualizar Plano de Ação Completo</span>
+              </button>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+                <button id="btnPrintPlan" class="action-secondary-btn" type="button">
+                  <span>📄 Salvar / Imprimir PDF</span>
+                </button>
+                <a id="btnShareWhatsApp" class="action-secondary-btn whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+                  <span>💬 Enviar no WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <div style="background:rgba(245, 158, 11, 0.1); border:1px solid rgba(245, 158, 11, 0.25); border-radius:var(--radius-sm); padding:0.85rem; margin-top:1rem; font-size:0.78rem; color:var(--text-muted); line-height:1.4;">
+              💡 <strong>Como enviar:</strong> Clique primeiro em <strong>"Salvar / Imprimir PDF"</strong> (escolha <em>Salvar como PDF</em>). Em seguida, clique em <strong>"Enviar no WhatsApp"</strong> para encaminhar o resumo com o PDF em anexo.
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem; text-align:center;">
+            <p style="font-size:0.75rem; color:var(--text-dim);">
+              Auditoria e Inteligência Imobiliária • Procempa Expediente 002.208593.00.3 SMAMUS POA
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVEGAÇÃO INFERIOR DO WIZARD -->
+    <footer class="wizard-footer-nav">
+      <button id="btnPrevStep" class="btn-nav-prev" type="button">
+        ← Voltar
+      </button>
+      <button id="btnNextStep" class="btn-nav-next" type="button">
+        Avançar para Etapa 2 →
+      </button>
+    </footer>
+
+  </main>
+
+  <!-- Script JS -->
+  <script src="app.js"></script>
+</body>
+</html>
