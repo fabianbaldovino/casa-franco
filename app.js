@@ -1038,6 +1038,24 @@ function setupEventListeners() {
     window.print();
   });
   document.getElementById('btnPreviewPlanModal')?.addEventListener('click', openPlanPreviewModal);
+
+  // Seletor de Fotos da Propriedade (Galeria Interativa)
+  document.querySelectorAll('.photo-switch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.photo-switch-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mainImg = document.getElementById('propertyMainImage');
+      if (mainImg && btn.dataset.src) {
+        mainImg.style.transition = 'opacity 0.2s ease';
+        mainImg.style.opacity = '0.35';
+        setTimeout(() => {
+          mainImg.src = btn.dataset.src;
+          mainImg.alt = btn.dataset.alt || 'Imóvel Gastão Rhodes, 394';
+          mainImg.style.opacity = '1';
+        }, 150);
+      }
+    });
+  });
 }
 
 // --- LOCAL STORAGE & PERSISTÊNCIA ---

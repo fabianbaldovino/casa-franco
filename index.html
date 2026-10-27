@@ -31,8 +31,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS Stylesheet com Cache-Busting -->
+  <link rel="stylesheet" href="style.css?v=2.5">
+  
+  <style>
+    /* Override anti-cache obrigatório: Garante que nenhuma barra fique insistente ou sticky no mobile ao descer a tela */
+    @media (max-width: 1024px) {
+      .site-header,
+      .executive-hud,
+      .wizard-nav,
+      .wizard-footer-nav {
+        position: static !important;
+        top: auto !important;
+        bottom: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -154,10 +168,19 @@
       </div>
 
       <div class="property-hero-grid">
-        <!-- Visual do Imóvel -->
+        <!-- Visual do Imóvel com Galeria Interativa -->
         <div class="property-visual-card">
-          <img src="./gopro/GP010068.JPG" onerror="this.src='./gopro/GP010067.JPG'" alt="Fachada Gastão Rhodes" class="property-visual-bg">
+          <img id="propertyMainImage" src="./assets/casa_fachada.jpg" onerror="this.src='./gorpo/GP010067.JPG'" alt="Fachada Gastão Rhodes, 394" class="property-visual-bg">
           <div class="property-visual-overlay"></div>
+          
+          <!-- Seletor de Fotos em Miniatura / Pílulas -->
+          <div class="property-photo-switcher" aria-label="Galeria de Fotos do Imóvel">
+            <button type="button" class="photo-switch-btn active" data-src="./assets/casa_fachada.jpg" data-alt="Fachada Principal - Gastão Rhodes, 394">🏠 Fachada</button>
+            <button type="button" class="photo-switch-btn" data-src="./assets/casa_aerea.jpg" data-alt="Vista Aérea Drone do Lote">🛰️ Drone</button>
+            <button type="button" class="photo-switch-btn" data-src="./assets/casa_patio.jpg" data-alt="Pátio e Terreno">🌿 Pátio</button>
+            <button type="button" class="photo-switch-btn" data-src="./assets/casa_fundos.jpg" data-alt="Fundos da Casa">🏡 Fundos</button>
+          </div>
+
           <div class="property-visual-content">
             <span class="property-tag">Santana • Porto Alegre / RS</span>
             <h3 class="property-name">Residencial & Terreno Nobre</h3>
@@ -220,7 +243,7 @@
             <label for="inputFrancoAnuncio" class="franco-input-label">
               1. Preço de Anúncio Inicial (Oferta de Partida)
             </label>
-            <input id="inputFrancoAnuncio" class="gold-input-field" type="text" value="R$ 630.000">
+            <input id="inputFrancoAnuncio" class="gold-input-field" type="text" inputmode="numeric" value="R$ 630.000">
             <span class="franco-input-hint">Valor visível nos anúncios e nas abordagens iniciais.</span>
           </div>
 
@@ -229,7 +252,7 @@
             <label for="inputFrancoFechamento" class="franco-input-label">
               2. Meta Real de Fechamento
             </label>
-            <input id="inputFrancoFechamento" class="gold-input-field" type="text" value="R$ 590.000">
+            <input id="inputFrancoFechamento" class="gold-input-field" type="text" inputmode="numeric" value="R$ 590.000">
             <span class="franco-input-hint">O patamar ideal que satisfaz seu objetivo financeiro.</span>
           </div>
 
@@ -238,7 +261,7 @@
             <label for="inputFrancoPiso" class="franco-input-label">
               3. Piso Mínimo Inegociável
             </label>
-            <input id="inputFrancoPiso" class="gold-input-field" type="text" value="R$ 560.000">
+            <input id="inputFrancoPiso" class="gold-input-field" type="text" inputmode="numeric" value="R$ 560.000">
             <span class="franco-input-hint">Propostas abaixo deste valor serão automaticamente recusadas.</span>
           </div>
         </div>
@@ -609,7 +632,7 @@
 
   </main>
 
-  <!-- Script JS -->
-  <script src="app.js"></script>
+  <!-- Script JS com Cache-Busting -->
+  <script src="app.js?v=2.5"></script>
 </body>
 </html>
