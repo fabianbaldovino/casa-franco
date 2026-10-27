@@ -735,26 +735,28 @@ function renderPrintablePlan() {
   const modoLongo = MODOS_EXECUCAO[state.executionMode]?.longo || 'Pendente — ainda não definido pelo proprietário.';
 
   printContainer.innerHTML = `
-    <!-- CABEÇALHO FORMAL -->
+    <!-- ====================================================================
+         PÁGINA 1: IDENTIFICAÇÃO + PREÇOS + ORÇAMENTO + RITMO DE INÍCIO
+         ==================================================================== -->
     <div class="print-doc-header">
-      <div style="border-bottom: 3px solid #1e3a8a; padding-bottom: 12px; margin-bottom: 20px;">
+      <div style="border-bottom: 2.5px solid #1e3a8a; padding-bottom: 8px; margin-bottom: 12px;">
         <div style="display:flex; justify-content:space-between; align-items:flex-start;">
           <div>
-            <div style="font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#2563eb; margin-bottom:4px;">
+            <div style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#2563eb; margin-bottom:2px;">
               Documento Executivo de Comercialização
             </div>
-            <h1 style="font-size:22px; font-weight:900; margin:0; text-transform:uppercase; color:#0f172a; line-height:1.2;">
+            <h1 style="font-size:18px; font-weight:900; margin:0; text-transform:uppercase; color:#0f172a; line-height:1.2;">
               Plano de Ação Estratégico de Venda
             </h1>
-            <div style="font-size:13px; color:#475569; margin-top:4px;">
+            <div style="font-size:11px; color:#475569; margin-top:2px;">
               Imóvel: <strong>Rua Dr. Gastão Rhodes, 394 – Bairro Santana, Porto Alegre/RS</strong> (CEP 90620-040)
             </div>
           </div>
-          <div style="text-align:right; border-left:2px solid #e2e8f0; padding-left:15px;">
-            <div style="font-size:11px; text-transform:uppercase; color:#64748b; font-weight:700;">Status do Plano</div>
-            <div style="font-size:13px; font-weight:800; color:${aprovado ? '#16a34a' : '#d97706'};">${aprovado ? 'APROVADO PELO PROPRIETÁRIO' : 'RASCUNHO – NÃO APROVADO'}</div>
-            <div style="font-size:11px; color:#64748b; margin-top:3px;">Código: <strong>${codigo}</strong></div>
-            <div style="font-size:11px; color:#64748b;">${dataDoc}</div>
+          <div style="text-align:right; border-left:2px solid #e2e8f0; padding-left:12px;">
+            <div style="font-size:9px; text-transform:uppercase; color:#64748b; font-weight:700;">Status do Plano</div>
+            <div style="font-size:11px; font-weight:800; color:${aprovado ? '#16a34a' : '#d97706'};">${aprovado ? 'APROVADO PELO PROPRIETÁRIO' : 'RASCUNHO – NÃO APROVADO'}</div>
+            <div style="font-size:9.5px; color:#64748b; margin-top:1px;">Código: <strong>${codigo}</strong></div>
+            <div style="font-size:9.5px; color:#64748b;">${dataDoc}</div>
           </div>
         </div>
       </div>
@@ -766,8 +768,8 @@ function renderPrintablePlan() {
       <table class="print-table">
         <tbody>
           <tr>
-            <td style="width:25%; font-weight:bold; background:#f8fafc;">Endereço</td>
-            <td style="width:75%;">Rua Dr. Gastão Rhodes, 394 – Bairro Santana, Porto Alegre/RS, CEP 90620-040</td>
+            <td style="width:24%; font-weight:bold; background:#f8fafc;">Endereço</td>
+            <td style="width:76%;">Rua Dr. Gastão Rhodes, 394 – Bairro Santana, Porto Alegre/RS, CEP 90620-040</td>
           </tr>
           <tr>
             <td style="font-weight:bold; background:#f8fafc;">Expediente Municipal</td>
@@ -792,7 +794,7 @@ function renderPrintablePlan() {
     <!-- SEÇÃO 2: PREÇOS E ORÇAMENTO -->
     <div class="print-doc-section">
       <h2 class="print-sec-title">2. Precificação e Orçamento de Preparação</h2>
-      <p style="font-size:12px; color:#475569; margin:4px 0 10px 0;">${introPrecos}</p>
+      <p style="font-size:10px; color:#475569; margin:2px 0 6px 0;">${introPrecos}</p>
       <table class="print-table">
         <thead>
           <tr style="background:#f1f5f9;">
@@ -805,7 +807,7 @@ function renderPrintablePlan() {
         <tbody>
           <tr>
             <td><strong>Preço de anúncio inicial</strong></td>
-            <td><strong style="font-size:14px; color:#0f172a;">${formatCurrency(state.francoPrecoAnuncio)}</strong></td>
+            <td><strong style="font-size:12px; color:#0f172a;">${formatCurrency(state.francoPrecoAnuncio)}</strong></td>
             <td>${formatCurrency(AUDITORIA_VALORES.anuncio)}</td>
             <td><strong style="color:${diffColor};">${diffStr}</strong></td>
           </tr>
@@ -824,17 +826,17 @@ function renderPrintablePlan() {
         </tbody>
       </table>
 
-      <table class="print-table" style="margin-top:-6px;">
+      <table class="print-table" style="margin-top:2px;">
         <thead>
           <tr style="background:#fffbeb;">
-            <th colspan="2" style="color:#d97706; text-transform:uppercase; font-size:11px;">Orçamento Máximo de Preparação Aprovado</th>
+            <th colspan="2" style="color:#d97706; text-transform:uppercase; font-size:9.5px; padding:3px 6px;">Orçamento Máximo de Preparação Aprovado</th>
           </tr>
         </thead>
         <tbody>
           ${ORCAMENTO_PREPARACAO.map(o => `
           <tr>
-            <td style="width:75%; font-size:11px;">${escapeHTML(o.item)}</td>
-            <td style="width:25%; font-size:12px; font-weight:bold; text-align:right;">${escapeHTML(o.valor)}</td>
+            <td style="width:75%; font-size:9.5px; padding:3px 6px;">${escapeHTML(o.item)}</td>
+            <td style="width:25%; font-size:10px; font-weight:bold; text-align:right; padding:3px 6px;">${escapeHTML(o.valor)}</td>
           </tr>`).join('')}
         </tbody>
       </table>
@@ -843,81 +845,82 @@ function renderPrintablePlan() {
     <!-- SEÇÃO 3: RITMO -->
     <div class="print-doc-section">
       <h2 class="print-sec-title">3. Ritmo de Início</h2>
-      <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:10px 14px; border-radius:4px; font-size:12px; line-height:1.5;">
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:8px 12px; border-radius:4px; font-size:10.5px; line-height:1.4;">
         <strong>Modalidade escolhida:</strong> ${escapeHTML(modoLongo)}
       </div>
     </div>
 
-    <!-- SEÇÃO 4: B2B -->
-    <div class="print-doc-section" style="page-break-inside: avoid;">
-      <h2 class="print-sec-title">4. Fase 1: Incorporadoras e Construtoras (B2B)</h2>
+    <!-- ====================================================================
+         PÁGINA 2: FASE 1 - 30 INCORPORADORAS & CONSTRUTORAS B2B
+         ==================================================================== -->
+    <div class="print-page-break"></div>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
-        <div style="border:1px solid #e2e8f0; padding:8px 12px; background:#fff; font-size:11px;">
-          <strong>Ação 1 – Prospecção ativa:</strong><br>
-          Contato direto com as áreas de Novos Negócios e Captação de Terrenos, apresentação do regime urbanístico (UEU 74), envio do dossiê técnico de precificação e do vídeo com imagens aéreas em 4K.
+    <div class="print-doc-section" style="padding-top:4px;">
+      <h2 class="print-sec-title" style="margin-top:0;">4. Fase 1: Incorporadoras e Construtoras (B2B)</h2>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+        <div style="border:1px solid #e2e8f0; padding:6px 10px; background:#fff; font-size:9.5px; border-radius:3px;">
+          <strong style="color:#1e3a8a;">Ação 1 – Prospecção ativa:</strong><br>
+          Contato direto com diretores de Novos Negócios e Captação de Terrenos, envio do dossiê técnico de precificação e vídeo com imagens de Drone em 4K.
         </div>
-        <div style="border:1px solid #e2e8f0; padding:8px 12px; background:#fff; font-size:11px;">
-          <strong>Ação 2 – Vistorias e negociação:</strong><br>
-          Recepção de engenheiros e diretores no imóvel para avaliação técnica e condução das propostas de compra ou permuta.
+        <div style="border:1px solid #e2e8f0; padding:6px 10px; background:#fff; font-size:9.5px; border-radius:3px;">
+          <strong style="color:#1e3a8a;">Ação 2 – Vistorias e negociação:</strong><br>
+          Recepção de engenheiros e arquitetos no imóvel para avaliação técnica e condução das propostas de compra ou permuta.
         </div>
       </div>
 
-      <div style="font-size:12px; font-weight:bold; margin-bottom:6px;">
-        Construtoras aprovadas pelo Franco para abordagem (${selectedCompanies.length}):
+      <div style="font-size:10px; font-weight:800; color:#0f172a; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.3px;">
+        🏢 Construtoras aprovadas pelo Franco para abordagem (${selectedCompanies.length}):
       </div>
 
       ${selectedCompanies.length === 0 ? `
-        <div style="font-size:12px; color:#64748b; font-style:italic; padding:10px; background:#f8fafc; border:1px dashed #cbd5e1;">Nenhuma construtora foi selecionada. A prospecção B2B fica suspensa.</div>
+        <div style="font-size:11px; color:#64748b; font-style:italic; padding:10px; background:#f8fafc; border:1px dashed #cbd5e1;">Nenhuma construtora foi selecionada. A prospecção B2B fica suspensa.</div>
       ` : `
-        <table class="print-table" style="font-size:11px;">
-          <thead>
-            <tr style="background:#f1f5f9;">
-              <th style="width:28%;">Empresa</th>
-              <th style="width:25%;">Categoria / Perfil</th>
-              <th style="width:47%;">Perfil de Atuação</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${selectedCompanies.map(c => `
-              <tr>
-                <td><strong>${escapeHTML(c.name)}</strong></td>
-                <td>${escapeHTML(c.tag)}</td>
-                <td>${escapeHTML(c.desc)}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
+        <div class="print-b2b-grid">
+          ${selectedCompanies.map(c => `
+            <div class="print-b2b-item">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1px;">
+                <strong style="color:#0f172a; font-size:9.5px;">${escapeHTML(c.name)}</strong>
+                <span style="font-size:7pt; font-weight:700; color:#1d4ed8; background:#eff6ff; padding:1px 4px; border-radius:2px; border:1px solid #bfdbfe;">${escapeHTML(c.tag)}</span>
+              </div>
+              <div style="font-size:8px; color:#475569; line-height:1.25;">${escapeHTML(c.desc)}</div>
+            </div>
+          `).join('')}
+        </div>
       `}
     </div>
 
-    <!-- SEÇÃO 5: FSBO -->
-    <div class="print-doc-section" style="page-break-inside: avoid; margin-top:15px;">
-      <h2 class="print-sec-title">5. Fase 2: Portais e Canais de Venda Direta</h2>
+    <!-- ====================================================================
+         PÁGINA 3: FASE 2 (FSBO) + OBSERVAÇÕES + TERMO DE APROVAÇÃO
+         ==================================================================== -->
+    <div class="print-page-break"></div>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
-        <div style="border:1px solid #e2e8f0; padding:8px 12px; background:#fff; font-size:11px;">
-          <strong>Ação 1 – Atendimento e mídia:</strong><br>
-          Envio das fotos e vídeos do imóvel aos interessados, por WhatsApp ou link.
+    <div class="print-doc-section" style="padding-top:4px;">
+      <h2 class="print-sec-title" style="margin-top:0;">5. Fase 2: Portais e Canais de Venda Direta (FSBO)</h2>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+        <div style="border:1px solid #e2e8f0; padding:6px 10px; background:#fff; font-size:9.5px; border-radius:3px;">
+          <strong style="color:#059669;">Ação 1 – Atendimento e mídia:</strong><br>
+          Envio de fotos limpas e tomadas em drone aos interessados por WhatsApp; resposta e qualificação de compradores em minutos.
         </div>
-        <div style="border:1px solid #e2e8f0; padding:8px 12px; background:#fff; font-size:11px;">
-          <strong>Ação 2 – Qualificação e visitas:</strong><br>
-          Verificação prévia da capacidade de pagamento e agendamento de visitas nos horários de melhor iluminação.
+        <div style="border:1px solid #e2e8f0; padding:6px 10px; background:#fff; font-size:9.5px; border-radius:3px;">
+          <strong style="color:#059669;">Ação 2 – Qualificação e visitas:</strong><br>
+          Filtrar especuladores e receber apenas compradores reais pré-qualificados na propriedade com roteiro de valorização.
         </div>
       </div>
 
-      <div style="font-size:12px; font-weight:bold; margin-bottom:6px;">
-        Portais e canais aprovados (${selectedPortals.length}):
+      <div style="font-size:10px; font-weight:800; color:#0f172a; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.3px;">
+        🌐 Portais e canais aprovados (${selectedPortals.length}):
       </div>
 
       ${selectedPortals.length === 0 ? `
-        <div style="font-size:12px; color:#64748b; font-style:italic; padding:10px; background:#f8fafc; border:1px dashed #cbd5e1;">Nenhum portal foi selecionado. A divulgação direta fica suspensa.</div>
+        <div style="font-size:11px; color:#64748b; font-style:italic; padding:10px; background:#f8fafc; border:1px dashed #cbd5e1;">Nenhum portal foi selecionado. A divulgação direta fica suspensa.</div>
       ` : `
-        <table class="print-table" style="font-size:11px;">
+        <table class="print-table" style="font-size:9px;">
           <thead>
             <tr style="background:#f1f5f9;">
-              <th style="width:25%;">Canal / Plataforma</th>
-              <th style="width:25%;">Modelo de Custo</th>
+              <th style="width:24%;">Canal / Plataforma</th>
+              <th style="width:26%;">Modelo de Custo</th>
               <th style="width:50%;">Público-Alvo</th>
             </tr>
           </thead>
@@ -935,32 +938,36 @@ function renderPrintablePlan() {
     </div>
 
     <!-- SEÇÃO 6: OBSERVAÇÕES -->
-    <div class="print-doc-section" style="page-break-inside: avoid; margin-top:15px;">
-      <h2 class="print-sec-title">6. Observações do Franco</h2>
-      <div style="border:1px solid #cbd5e1; background:#fcfcfc; padding:12px 16px; border-radius:4px; font-size:12px; line-height:1.6; font-style:italic; white-space:pre-wrap;">${state.francoNotes ? `"${escapeHTML(state.francoNotes)}"` : 'Sem observações adicionais. Seguir o plano conforme aprovado.'}</div>
+    <div class="print-doc-section" style="margin-top:10px;">
+      <h2 class="print-sec-title">6. Observações e Diretrizes do Franco</h2>
+      <div style="border:1px solid #cbd5e1; background:#fcfcfc; padding:8px 12px; border-radius:4px; font-size:10px; line-height:1.5; font-style:italic; white-space:pre-wrap;">${state.francoNotes ? `"${escapeHTML(state.francoNotes)}"` : 'Sem observações adicionais. Seguir rigorosamente o plano comercial conforme aprovado.'}</div>
     </div>
 
     <!-- SEÇÃO 7: TERMO DE APROVAÇÃO -->
-    <div class="print-doc-section" style="page-break-inside: avoid; margin-top:25px;">
-      <div style="border: 2px solid #0f172a; padding: 15px; border-radius: 4px; background:#f8fafc;">
-        <h3 style="margin:0 0 8px 0; font-size:13px; text-transform:uppercase; color:#0f172a; font-weight:800;">
-          Termo de Aprovação e Autorização de Execução
+    <div class="print-doc-section print-avoid-break" style="margin-top:14px;">
+      <div style="border: 2px solid #0f172a; padding: 12px 14px; border-radius: 4px; background:#f8fafc;">
+        <h3 style="margin:0 0 6px 0; font-size:11.5px; text-transform:uppercase; color:#0f172a; font-weight:800;">
+          Termo Formal de Aprovação e Autorização de Execução Comercial
         </h3>
-        <p style="font-size:11px; color:#334155; line-height:1.5; margin:0 0 15px 0;">
-          Declaro que revisei e aprovei integralmente os preços, o orçamento de preparação, o ritmo de início e a lista de construtoras e portais selecionados neste Plano de Ação para a venda do imóvel situado na Rua Dr. Gastão Rhodes, 394 – Santana, Porto Alegre/RS. Autorizo a execução dos trabalhos e a condução das negociações com base nas definições deste documento.
+        <p style="font-size:9.5px; color:#334155; line-height:1.45; margin:0 0 12px 0;">
+          Declaro que revisei e aprovei integralmente os preços de partida, o orçamento máximo de preparação, o ritmo de início e a lista de construtoras e portais selecionados neste Plano de Ação para a comercialização do imóvel situado na Rua Dr. Gastão Rhodes, 394 – Santana, Porto Alegre/RS. Autorizo o início das abordagens e a condução das negociações com base nestas diretrizes.
         </p>
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed #94a3b8; padding-top:15px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px dashed #94a3b8; padding-top:10px;">
           <div>
-            <div style="height:28px;"></div>
-            <div style="border-top:1px solid #0f172a; width:220px; padding-top:4px; font-size:12px; font-weight:800; color:#0f172a;">FRANCO (PROPRIETÁRIO)</div>
-            <div style="font-size:10px; color:#64748b;">Assinatura</div>
+            <div style="height:22px;"></div>
+            <div style="border-top:1px solid #0f172a; width:220px; padding-top:3px; font-size:11px; font-weight:800; color:#0f172a;">FRANCO (PROPRIETÁRIO)</div>
+            <div style="font-size:9px; color:#64748b;">Assinatura / Concordância</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:11px; font-weight:800; color:#1e3a8a;">CÓDIGO DA APROVAÇÃO</div>
-            <div style="font-family:monospace; font-size:12px; font-weight:700; color:#0f172a;">${codigo}</div>
-            <div style="font-size:10px; color:#64748b;">Deve coincidir com o código da mensagem de WhatsApp</div>
+            <div style="font-size:9.5px; font-weight:800; color:#1e3a8a;">CÓDIGO DE AUTENTICAÇÃO DO PLANO</div>
+            <div style="font-family:monospace; font-size:11px; font-weight:800; color:#0f172a;">${codigo}</div>
+            <div style="font-size:8.5px; color:#64748b;">Conferência de segurança com a mensagem de WhatsApp</div>
           </div>
         </div>
+      </div>
+
+      <div style="text-align:center; margin-top:10px; font-size:8px; color:#94a3b8;">
+        Documento gerado pelo Assistente de Inteligência Imobiliária Santana POA • Dr. Gastão Rhodes, 394
       </div>
     </div>
   `;
